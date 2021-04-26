@@ -17,4 +17,4 @@ make pdflatex
 
 Si todo se ejecuta sin inconvenientes esto deberá generar el archivo `main.pdf`.
 
-**Nota** la compilación hará uso de una imagen de Docker que tiene lo necesario para hacer la compilación del documento. Dicha imagen se puede conseguir en [este enlace](https://github.com/blang/latex-docker).
+**Nota** la compilación hará uso de una imagen de Docker que tiene lo necesario para hacer la compilación del documento. La primera vez que lleve a cabo el proceso de compilación, le tomará un cierto tiempo pues la imagen de LaTeX tiene un tamaño de más de 2 GB. Dicha imagen se puede conseguir en [este enlace](https://github.com/blang/latex-docker). 
