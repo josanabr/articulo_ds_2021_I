@@ -1,1 +1,20 @@
 \section{\label{sec:trabajo-relacionado} Related work}
+Rad, B. et al. \cite{rad2017introduction} presents a performance comparison between hypervisor-based and container-based technologies. 
+Three scenarios are under test: Docker vs KVM, LXC vs Xen and bare metal, Docker and KVM. 
+All scenarios show how container technologies exhibit a better performance when they are compared with hypervisor ones. 
+Experiments with Docker also show how its performance is close to the bare metal environment.
+Those experiments were not homogeneous. 
+When Docker was compared with KVM, an image processing test was carried out. 
+The LXC and Xen scenario run SQL queries.
+And bare metal, Docker and KVM; employed reading and writing I/O operations.
+The heterogeneity of the tests makes it difficult to state a clear picture about an overall performance of the different technologies under study.
+However, Docker showed a good overall performance.
+
+Torrez et. al. \cite{torrez2019hpc} studied three different HPC oriented container technologies: Charliecloud, Shifter and Singularity.
+These technologies were evaluated against industry-standard benchmarks (SysBench,  STREAM,  and  HPCG).
+These benchmarks are written in a wide range of programming languages such as: C, Python, Go, shell scripts amongst others.
+Experimental results show little performance degradation. 
+However, 1.8\% of memory degradation was found which authors stated is negligible. 
+They encourage to containerize applications because of the low impact exhibited by the technologies under study.
+Unfortunately, their results do not consider startup and teardown overhead. 
+This overhead is not negligible when many container instances are fired.
