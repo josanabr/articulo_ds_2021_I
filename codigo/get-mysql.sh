@@ -1,5 +1,8 @@
 
 
+#Código adaptado de https://gist.github.com/Mins/4602864
+#Incluye comentario de: b23prodtm 
+
 #!/bin/bash
 
 sudo apt update
