@@ -38,20 +38,20 @@ while i < len(r):
           output_authors.append("{}, {}.".format(last.capitalize(), first.capitalize()[0]))
       i += 1
 
-    print("\\bibitem{%s}" % code)
+    print "\bibitem{%s}" % code
     if len(output_authors) == 1:
-      print(output_authors[0] + " {}. ".format(title), end=' ')
+      print output_authors[0] + " {}. ".format(title),
     else:
-      print(", ".join(_ for _ in output_authors[:-1]) + " & " + output_authors[-1] + " {}. ".format(title), end=' ')
+      print ", ".join(_ for _ in output_authors[:-1]) + " & " + output_authors[-1] + " {}. ".format(title),
     if venue:
-      print("{{\\em {}}}.".format(" ".join([_.capitalize() for _ in venue.split(' ')])), end=' ')
+      print "{{\em {}}}.".format(" ".join([_.capitalize() for _ in venue.split(' ')])),
       if volume:
-        sys.stdout.write(" \\textbf{{{}}}".format(volume))
+        sys.stdout.write(" \textbf{{{}}}".format(volume))
       if pages:
         sys.stdout.write(", {}".format(pages) if number else " pp. {}".format(pages))
       if year:
         sys.stdout.write(" ({})".format(year))
     if publisher and not venue:
-      print("({},{})".format(publisher, year))
-    print()
-    print()
+      print "({},{})".format(publisher, year)
+    print
+    print
