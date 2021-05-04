@@ -13,7 +13,7 @@ Once \emph{Docker} is installed, \emph{MySql} and \emph{PostgreSQL} images were 
 
 \begin{verbatim}
 # Pull the MySQL Docker Image
-$ docker pull mysql/mysql-server:latest
+$ docker pull mysql/mysql-server:8.0
 
 # Deploy the MySQL Container
 $ docker run --name=my-sql-docker -d mysql/mysql-server:8.0
@@ -25,5 +25,12 @@ $ docker exec -it my-sql-docker mysql -uroot -p
 \textbf{PostgreSQL}:
 
 \begin{verbatim}
-Postgresql steps
+# Pull the Postgres Docker Image
+$ docker pull postgres:13.2
+
+# Deploy the Postgres Container
+$ docker run --name posCont -e POSTGRES_PASSWORD=pwd -p 5432:5432 -d postgres:13.2
+
+# Start a Postgres client inside the container
+$ docker exec -it posCont psql -U postgres
 \end{verbatim}
