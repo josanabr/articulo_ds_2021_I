@@ -1,5 +1,5 @@
 \documentclass[conference]{IEEEtran}
-\usepackage[spanish]{babel}
+%\usepackage[spanish]{babel}
 % http://nokyotsu.com/latex/acentos.html El paquete inputenc permite incluir
 % los caracteres con tilde. En el enlace se dan mas detalles al respecto.
 \usepackage[utf8]{inputenc}
@@ -253,20 +253,20 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Evaluación de rendimiento en ambientes basados en contenedores}
+\title{An updated performance evaluation of container-based virtualization technologies}
 
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
 \author{
-\IEEEauthorblockN{María A. Aguiar}
+\IEEEauthorblockN{Maria Aguiar}
 \IEEEauthorblockA{Universidad del Valle\\
-Email: xxxxx.xxxxxxxxxx@correounivalle.edu.co}
+Email: maria.aguiar@correounivalle.edu.co}
 \and
 \IEEEauthorblockN{Cristian Ballesteros}
 \IEEEauthorblockA{Universidad del Valle\\
-Email: xxxxx.xxxxxxxxxx@correounivalle.edu.co}
+Email: cristian.ballesteros@correounivalle.edu.co}
 \and
 \IEEEauthorblockN{Alejandro Bravo}
 \IEEEauthorblockA{Universidad ICESI\\
@@ -278,7 +278,7 @@ Email: xxxxx.xxxxxxxxxx@correounivalle.edu.co}
 \and
 \IEEEauthorblockN{Johan Mera}
 \IEEEauthorblockA{Universidad del Valle\\
-Email: xxxxx.xxxxxxxxxx@correounivalle.edu.co}
+Email: johan.millan@correounivalle.edu.co}
 \and
 \IEEEauthorblockN{Orlando Montenegro}
 \IEEEauthorblockA{Universidad del Valle\\
@@ -286,7 +286,7 @@ Email: xxxxx.xxxxxxxxxx@correounivalle.edu.co}
 \and
 \IEEEauthorblockN{Kenneth Puliche}
 \IEEEauthorblockA{Universidad del Valle\\
-Email: xxxxx.xxxxxxxxxx@correounivalle.edu.co}
+Email: kenneth.puliche@correounivalle.edu.co}
 \and
 \IEEEauthorblockN{Pavel Zambrano}
 \IEEEauthorblockA{Universidad del Valle\\
@@ -308,6 +308,7 @@ Email: john.sanabria@correounivalle.edu.co}
   \input{despliegue/docker}
   \input{despliegue/lxc}
   \input{despliegue/coreos}
+  \input{despliegue/baremetal}
 
 \input{benchmarking}
 
@@ -334,9 +335,35 @@ Email: john.sanabria@correounivalle.edu.co}
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{rad2017introduction}
+Rad, B., Bhatti, H. \& Ahmadi, M. An introduction to docker and analysis of its performance.  {\em International Journal Of Computer Science And Network Security (ijcsns)}.  \textbf{17}, 228 (2017).
+
+\bibitem{torrez2019hpc}
+Torrez, A., Les, T. \& Priedhorsky, R. HPC container runtimes have minimal or no performance impact. {\em 2019 IEEE/ACM International Workshop on Containers and New Orchestration Paradigms for Isolated Environments in HPC (CANOPIE-HPC)}. \textbf{37--42}, (2019).
+
+\bibitem{saransig2018performance}
+Saransig, A. \& Tapia, F. Performance analysis of monolithic and micro service architectures--containers technology. {\em International Conference on Software Process Improvement}. \textbf{270--279}, (2018).
+
+\bibitem{ruiz2015performance}
+Ruiz, A. \& Jeanvoine, E. \& Nussbaum, L. Performance evaluation of containers for HPC. {\em European Conference on Parallel Processing}. \textbf{813--824}, (2015).
+
+
+\bibitem{soltesz2007container}
+Soltesz, S., P{\"o}tzl, H., Fiuczynski, M., Bavier, A. \& Peterson, L. Container-based operating system virtualization: a scalable, high-performance alternative to hypervisors. {\em Proceedings of the 2Nd ACM SIGOPS/EuroSys european conference on computer systems 2007}, \textbf{275--287}, (2007).
+
+
+\bibitem{chae2019performance}
+Chae, M., Lee, H. \& Lee, K. A performance comparison of linux containers and virtual machines using Docker and KVM.  {\em Cluster Computing}. 	extbf{22}, 1765--1775 (2019).
+
+
+\bibitem{casalicchio2017measuring}
+Casalicchio, E. \& Perciballi, V. Measuring docker performance: What a mess!!!. {\em Proceedings of the 8th ACM/SPEC on International Conference on Performance Engineering Companion}, \textbf{11--16} (2017).
+
+\bibitem{kozhirbayev2017performance}
+Kozhirbayev, Z. \& Sinnott, R. A performance comparison of container-based technologies for the cloud.  {\em Future Generation Computer Systems}. 	\textbf{68} pp. 175--182 (2017).
+
+\bibitem{amaral2015performance}
+Amaral, M., Polo, J., Carrera, D., Mohomed, I., Unuvar, M. \& Steinder, M. Performance evaluation of microservices architectures using containers. {\em 2015 IEEE 14th International Symposium on Network Computing and Applications} pp. 27--34 (2015).
 
 \end{thebibliography}
 
