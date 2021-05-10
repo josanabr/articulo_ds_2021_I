@@ -1,1 +1,85 @@
 \section{\label{sec:trabajo-relacionado} Related work}
+Rad, B. et al. \cite{rad2017introduction} presents a performance comparison between hypervisor-based and container-based technologies. 
+Three scenarios are under test: Docker vs KVM, LXC vs Xen and bare metal, Docker and KVM. 
+All scenarios show how container technologies exhibit a better performance when they are compared with hypervisor ones. 
+Experiments with Docker also show how its performance is close to the bare metal environment.
+Those experiments were not homogeneous. 
+When Docker was compared with KVM, an image processing test was carried out. 
+The LXC and Xen scenario run SQL queries.
+And bare metal, Docker and KVM; employed reading and writing I/O operations.
+The heterogeneity of the tests makes it difficult to state a clear picture about an overall performance of the different technologies under study.
+However, Docker showed a good overall performance.
+
+Torrez et. al. \cite{torrez2019hpc} studied three different HPC oriented container technologies: Charliecloud, Shifter and Singularity.
+These technologies were evaluated against industry-standard benchmarks (SysBench,  STREAM,  and  HPCG).
+These benchmarks are written in a wide range of programming languages such as: C, Python, Go, shell scripts amongst others.
+Experimental results show little performance degradation. 
+However, 1.8\% of memory degradation was found which authors stated is negligible. 
+They encourage to containerizing applications because of the low impact exhibited by the technologies under study.
+Unfortunately, their results do not consider startup and teardown overhead. 
+This overhead is not negligible when many container instances are fired.
+
+Saransing and Tapia \cite{saransig2018performance} were interested in to assessing the performance of microservice- and monolithic-based applications under Docker and KVM, respectively. 
+Authors developed a web-based application to carry out their experiments.
+The application has two main components: a frontend (written in Nodejs) and a backend (MySQL and MongoDB were under test).
+CPU, RAM and network; were the resources under evaluation.
+Preliminary results indicated that network performance was affected in a Docker-based scenario due to the overlay nature of the network.
+This virtualization layer at connectivity level affects the network throughput between application components.
+Thus, RAM and network were better managed under a monolithic scenario.
+However, CPU usage was slightly better under the microservice approach.
+
+Ruiz et. al. \cite{ruiz2015performance} presented a performance analysis of HPC applications deployed on top of container technologies.
+Their main concern is about parallel and distributed HPC applications. 
+Ruiz' work intends to answer the question What is the impact of using container-based virtualization to execute HPC workloads?
+Ruiz et. al. employed LXC as the container-based technology and 
+%LXC was selected because they claim other container-based technologies (e.g.  Docker, systemd-nspawn and Google's lmctfy) so obtained results could be extrapolated to similar technologies.
+NPB (NAS Parallel Benchmarks) as the tool used during the benchmarking process.
+Experimental results indicated that memory bound applications running inside containers exhibited a CPU performance degradation.
+Likewise, inter-container communication was also affected by the default container network interconnection. 
+However, authors recognize that recent kernel versions have brought performance enhancements and a proper configuration and management of the container technology could improve the observed results.
+%This issue's impact can be diminished either tweaking kernel network parameters or integrating more advance network interconnection such as macvlan, SR-IOV or OpenvSwitch.
+%Although the observed performance degradation, authors recognizes that improvements have been observed on newer kernel versions.
+
+Soltesz et. al. \cite{soltesz2007container} presented the very first studies comparing container- and hypervisor-based technologies. 
+They run customized benchmarks related to database transactions and I/O operations. 
+Xen (hypervisor technology) performed worse on I/O scenarios than its counterpart VServer (container technology). 
+
+Chae et. al. \cite{chae2019performance} run three set of experiments comparing the performance of KVM and Docker. 
+Through incremental experiments, from 1 to 4 vms and containers, respectively, the usage of CPU and RAM was observed.
+In container scenarios the consumed amount of CPU and RAM were negligible whilst the number of containers growth.
+In KVM scenario the amount of used RAM importantly increased but the CPU increment was negligible.  
+Another experiment employed a stress-test over a web server using JMeter.
+In this case, 100 users were simulated.
+In general, Docker was about 80\% of idle CPU whilst KVM exhibited a 60\% of idle CPU.
+The amount of RAM in Docker was about 336 MB whilst KVM was about 1360 MB.
+Thus, KVM exhibited from 3 to 5 times more RAM consumption than Docker. 
+Docker exhibited better resource management when it is compared against KVM. 
+
+Casalicchio and Perciballi \cite{casalicchio2017measuring} explores different tools for measuring the Docker performance from the perspective of the host and the virtualization environment.
+Casalicchio and Perciballi used open source performance profilers such as: mpstat, iostat, docker stats and cAdvisor.
+The experiments employed synthetic CPU and disk workloads.
+Different tools gave different results. 
+For CPU workloads, docker stats showed the demanded CPU by threads  whilst mpstat and cAdvisor measured the actual CPU use thus they gave an effective measure of the workload on the system.  
+For disk workloads, Docker exhibited between 18\% and 33\% of overhead for reading operations and 10\% to 27\% for writing operations.
+For large datasets (64GB and 128GB) the overhead for read and write throughput is about the same.
+iostat was the only available tool for effectively I/O monitoring but it is not specialized for dockerized environments.
+
+Kozhirbayev and Sinnot \cite{kozhirbayev2017performance} worked on performance measurement of CPU, RAM, bandwidth, latency and storage; resources over Docker and LXC technologies.
+CoreOS was initially considered but at that time was not available an official version, it was excluded from the study.
+To run the experiments, they used NeCTAR (Autralida-wide National eResearch Collaboration Tools and Resources) which is a national public cloud.
+They also employed one single instance to run these experiments.
+For CPU workloads, they employed different environments: a compression program, calculating the Pi value and vectorial operations. 
+Similar performance results were found.
+For I/O workloads, the difference was not relevant as well.
+However, on network operations, LXC was about 80\% slower than Docker on TCP- and UDP-based transfers.
+
+Amaral et. al. \cite{amaral2015performance} assess different scenarios(bare metal, containers and hypervisor technology) on different experiments (intensive CPU workloads, instance (VM or container) creation and network throughput).
+They observed that intensive CPU workloads are not affected because of virtualization layers.
+However, important differences were observed on creation instances and network throughput experiment results.
+Container-based scenarios exhibit a gracefully overhead increment during creation instances scenario.
+VM environments impose an important overhead in this circumstance. 
+During network throughput assessment, only container-based scenarios were put under test.  
+Results show that the host-network driver exhibits better performance when it is compared against Linux bridge and OpenvSwitch drivers.
+However, the host-network driver is only feasible on scenarios where intra-host container communication is possible.
+
+

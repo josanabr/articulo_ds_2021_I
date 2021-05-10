@@ -1,4 +1,36 @@
 \subsection{\label{sec:despliegue-docker}Docker}
 
-Para llevar a cabo el despliegue de Docker se puede hacer a través del comando:
+In order to install Docker, the following steps were performed:
 
+\begin{verbatim}
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sh get-docker.sh
+\end{verbatim}
+
+Once \emph{Docker} is installed, \emph{MySql} and \emph{PostgreSQL} images were deployed by applying the following steps:
+
+\textbf{MySql}:
+
+\begin{verbatim}
+# Pull the MySQL Docker Image
+$ docker pull mysql/mysql-server:8.0
+
+# Deploy the MySQL Container
+$ docker run --name=my-sql-docker -d mysql/mysql-server:8.0
+
+# Start a MySQL client inside the container
+$ docker exec -it my-sql-docker mysql -uroot -p
+\end{verbatim}
+
+\textbf{PostgreSQL}:
+
+\begin{verbatim}
+# Pull the Postgres Docker Image
+$ docker pull postgres:13.2
+
+# Deploy the Postgres Container
+$ docker run --name posCont -e POSTGRES_PASSWORD=pwd -p 5432:5432 -d postgres:13.2
+
+# Start a Postgres client inside the container
+$ docker exec -it posCont psql -U postgres
+\end{verbatim}
