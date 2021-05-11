@@ -23,10 +23,19 @@ Después de configurar lxd, para ejecutar las pruebas en lxd se debe ejecutar el
 
 ### Stress-ng
 
-EL comando que ejecuta todas las pruebas es el siguiente para el contenedor $CONTAINER y el tiempo de ejecución $TIMEOUT
+EL archivo *.sh que ejecuta todas las pruebas es `scripts/stress_ng.sh` este archivo se ejecuta en el contenedor lxd mediante
 
-`lxc exec $CONTAINER -- stress-ng --cpu 4 --timeout $TIMEOUT --metrics --log-file /root/stress_test.log`
+`lxc file push stress_ng.sh $CONTAINER/root/`  
+`lxc exec $CONTAINER -- sh stress_ng.sh`  
 
 Los resultados del test quedan guardados en /root/stress_test.log en el contenedor, y pueden consultarse extrayendo el archivo mediante
 
 `lxc file pull $CONTAINER/root/stress_ng.log .`
+
+## Vagrant
+
+Se dispone un archivo vagrantfile que corre la imagen generic/ubuntu2010 para desplegar una maquina virtual
+donde se aproviciona la instalación de lxc/lxd y se copian los archivos *.sh necesarios para ejecutar las
+pruebas de stress-ng en el contenedor
+
+Para modificar las pruebas es necesario editar el archivo scripts/stress_ng.sh
