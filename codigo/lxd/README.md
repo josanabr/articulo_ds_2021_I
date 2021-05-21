@@ -18,7 +18,7 @@ Para llevar a cabo el despliegue del entorno virtual es necesario configurar:
 
 - Instalar `sudo apt install lxc snapd make`
 - Instalar lxd: `sudo snap install lxd`
-- Inicializar lxd con: `cat config.yml | lxd init --preseed`
+- Inicializar lxd mediante: `cat config.yml | sudo lxd init --preseed`
 
 ### Vagrant
 

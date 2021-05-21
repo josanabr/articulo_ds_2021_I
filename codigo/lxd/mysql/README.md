@@ -1,14 +1,15 @@
 # LXC/LXD con MySQL
 
-Esta carpeta contiene el paso a paso para acceder al servidor MySQL en un ambiente LXC/LXD
+Esta carpeta contiene el paso a paso para desplegar un servidor MySQL en un ambiente LXC/LXD de forma manual y poder acceder a este desde el host
 
 Ejecutar sobre una versión de kernel de linux 5.10.19
 
 ## Configuracion inicial
 
-- Una vez se tenga instalado LXC y LXD y se inicie el comando `sudo lxd init` se recomienda dejar las configuraciones por defecto.
+Una vez se tenga instalado LXC y LXD de acuerdo al README principal es necesario tener encuenta lo siguiente:
+
 - Es importante que se intale el servidor `MySQL` en el host de la maquina donde trabaje. Para ello puede utilizar el comando:
-- Instalar MySQL: `sudo apt install mysql-server `
+  - Instalar MySQL: `sudo apt install mysql-server `
 
 ## Procedimiento
 
@@ -34,7 +35,7 @@ Ejecutar sobre una versión de kernel de linux 5.10.19
 
   - Se obtiene lo siguiente:
 
-<img src="imagen/start_status_mysql.png" alt="Start_status" width="650"/>
+<img src="img/1.png" alt="Start_status" width="650"/>
 
 ### 3) Aceptacion de conexión en todas las interfaces de red:
 
@@ -46,13 +47,13 @@ Ejecutar sobre una versión de kernel de linux 5.10.19
 
   - Si no ha configurado aun el acceso remoto, se tiene lo siguiente:
 
-  <img src="imagen/bind_address_127.0.0.1.3306.png" alt="bind_address_127.0.0.1.3306" width="650"/>
+  <img src="img/2.png" alt="bind_address_127.0.0.1.3306" width="650"/>
 
 - Configurar el acceso remoto, abro **mysqld.cnf**, para configurar los cambio deseados: ` vi /etc/mysql/mysql.conf.d/mysqld.cnf`
 
   - Cambio de _bind-address_ de _127.0.0.1 por 0.0.0.0_
 
-  <img src="imagen/bind_address.png" alt="bind-adress" width="650"/>
+  <img src="img/3.png" alt="bind-adress" width="650"/>
 
 - Reinicie _MySQL_, para que se apliquen los cambios: `systemctl restart mysql`
 
@@ -62,7 +63,7 @@ Ejecutar sobre una versión de kernel de linux 5.10.19
 
   - Si hizo los cambios debe tener lo siguiente:
 
-  <img src="imagen/bind_address_0.0.0.0.3306.png" alt="bind_address_0.0.0.0.3306" width="650"/>
+  <img src="img/4.png" alt="bind_address_0.0.0.0.3306" width="650"/>
 
 ### 4) Obtener la ip del host y contenedor para hacer la comunicación:
 
@@ -70,14 +71,14 @@ Ejecutar sobre una versión de kernel de linux 5.10.19
 
 - Obtener la ip del Host , `ifconfig`
 
-  <img src="imagen/iphost.png" alt="iphost" width="650"/>
+  <img src="img/5.png" alt="iphost" width="650"/>
 
 - Obtener la ip del contenedor con MySQL:
 
   - Desde la terminal del contenedor : `ifconfig`
   - Desde el host, con el comando: `lxc list`
 
-  <img src="imagen/ipcontenedor.png" alt="iphost" width="650"/>
+  <img src="img/6.png" alt="iphost" width="650"/>
 
 ### 5) Creando una BBDD,para el flujo de informacion desde el MySQL, creado en el contenedor, hacia el host:
 
@@ -107,7 +108,7 @@ Ejecutar sobre una versión de kernel de linux 5.10.19
 
   - Si realizó el proceso se deberia mirar como lo siguiente:
 
-<img src="imagen/BBDD_creada.png" alt="comandos_para _creacion_BBDD" width="650"/>
+<img src="img/7.png" alt="comandos_para _creacion_BBDD" width="650"/>
 
 ### 5.2) Posicionarse en el Host para accceder al servidor MySQL, dentro del contenedor, para poder ver la base de datos `ejemplo1` creada , en paso [5.1](#51-posicionarse-en-el-contenedor-y-entrar-al-servidor-mysql-para-configurar-los-accesos)
 
@@ -123,4 +124,4 @@ Ejecutar sobre una versión de kernel de linux 5.10.19
 
   - se deberia tener algo como lo siguiente
 
-<img src="imagen/BBDD_Acceso_desde_host.png" alt="comandos_para _acceder_BBDD" width="650"/>
+<img src="img/8.png" alt="comandos_para _acceder_BBDD" width="650"/>
