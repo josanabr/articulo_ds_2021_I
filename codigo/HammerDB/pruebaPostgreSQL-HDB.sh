@@ -4,7 +4,7 @@ read -p "¿Desea borrar la base de datos previa? [s/n]: " name
 if [ $name = s ]
 then
 echo "BORRANDO LA ANTERIOR BASE DE DATOS DE PRUEBA"
-yes Y |  sudo -u postgres psql -c "DROP DATABASE [IF EXISTS] tpcc;"
+yes Y |  sudo -u postgres psql -c "DROP DATABASE IF EXISTS tpcc;"
 else
 echo "NO SE BORRÓ LA BASE DE DATOS DE PRUEBA"
 fi
