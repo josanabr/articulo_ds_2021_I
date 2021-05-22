@@ -43,8 +43,7 @@ El comando make se encarga de ejecutar el archivo `provision.sh` con la variable
 - Ejecuta `lxc exec $CONTAINER -- bash -c "cd /root/NPB/ && sh script_instalacion.sh"` para instalar NPB
 - Ejecuta `lxc exec $CONTAINER -- bash -c "cd /root/MySQL/ && sh inst-MySQL.sh"` para instalar MySQL
 - Ejecuta `lxc exec $CONTAINER -- bash -c "cd /root/PostgreSQL/ && sh inst-PostgreSQL.sh"` para instalar PostgreSQL
-- **TODO:** Realizar instalación de hammerdb mediante `lxc exec $CONTAINER -- bash -c "cd /root/HammerDB/ && sh inst-HammerDB.sh"`
-  - [**issue:**](https://github.com/josanabr/articulo_ds_2021_I/issues/21) El script `inst-HammerDB.sh` aun no registra **hammerdbcli** en el path y por lo tanto la ejecución de las pruebas falla
+- Ejecuta `lxc exec $CONTAINER -- bash -c "cd /root/HammerDB/ && sh inst-HammerDB.sh && mv HammerDB-4.1/* ."`  para instalar HammerDB
 
 En caso de requerir aprovisionar desde cero el contenedor se recomienda ejecutar
 
@@ -55,5 +54,31 @@ En caso de requerir aprovisionar desde cero el contenedor se recomienda ejecutar
 Para ejecutar las pruebas en el contenedor se debe ejecutar `make run-tests` el cual:
 
 - Ejecuta el archivo `run_tests.sh`
-- Ejecuta las pruebas en el contenedor `lxc exec $CONTAINER -- sh tests.sh` mediante el archivo `test.sh`
-- **TODO:** realiza un pull del contenedor al host de los archivos (.log, .txt) que retornan las pruebas mediante ejemplo(stress-ng): `lxc file pull $CONTAINER/root/stress_ng_lxc.log .`
+- Ejecuta las pruebas en el contenedor mediante el archivo `test.sh`
+
+Además para obtener los resultados una vez realizadas las pruebas solo es necesario ejecutar `make pull-logs` el cual copia los archivos con los resultados a la carpeta `logs/`
+
+## Makefile
+
+```Makefile
+all: provision
+clean: stop delete
+
+provision:
+	sh provision.sh lxdtest
+
+attach:
+	lxc exec lxdtest -- bash
+
+run-tests:
+	sh run_tests.sh lxdtest
+
+pull-logs:
+	sh pull_logs.sh lxdtest
+
+stop:
+	lxc stop lxdtest
+
+delete:
+	lxc delete lxdtest
+```

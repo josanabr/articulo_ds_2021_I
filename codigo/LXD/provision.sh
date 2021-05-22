@@ -24,7 +24,6 @@ echo "Install PostgreSQL"
 lxc exec $CONTAINER -- bash -c "cd /root/PostgreSQL/ && sh inst-PostgreSQL.sh"
 
 echo "Install HammerDB"
-# TODO: wait for script fixes
-#lxc exec $CONTAINER -- bash -c "cd /root/HammerDB/ && sh inst-HammerDB.sh"
+lxc exec $CONTAINER -- bash -c "cd /root/HammerDB/ && sh inst-HammerDB.sh && mv HammerDB-4.1/* ."
 
 echo "Redo from zero with make clean"

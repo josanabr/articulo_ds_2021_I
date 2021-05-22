@@ -10,6 +10,9 @@ attach:
 run-tests:
 	sh run_tests.sh lxdtest
 
+pull-logs:
+	sh pull_logs.sh lxdtest
+
 stop:
 	lxc stop lxdtest
 
