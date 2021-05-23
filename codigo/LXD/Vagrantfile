@@ -63,14 +63,22 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "file", source: "./scripts/stress_lxd.sh", destination: "~/stress_lxd.sh"
-  config.vm.provision "file", source: "./scripts/stress_ng.sh", destination: "~/stress_ng.sh"
+  config.vm.provision "file", source: "./config.yml", destination: "~/config.yml"
+  config.vm.provision "file", source: "../LXD/", destination: "~/" 
+  config.vm.provision "file", source: "../NPB/", destination: "~/"
+  config.vm.provision "file", source: "../HammerDB/", destination: "~/"
+  config.vm.provision "file", source: "../MySQL/", destination: "~/"
+  config.vm.provision "file", source: "../PostgreSQL/", destination: "~/"
   config.vm.provision "shell", inline: <<-SHELL
     echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
     apt update
-    apt install -y dos2unix lxc snapd
+    apt install -y dos2unix lxc snapd make zfsutils-linux
     snap install lxd
-    dos2unix /home/vagrant/stress_lxd.sh
-    dos2unix /home/vagrant/stress_ng.sh
+    dos2unix /home/vagrant/config.yml
+    dos2unix /home/vagrant/LXD/*.sh
+    dos2unix /home/vagrant/NPB/*.sh
+    dos2unix /home/vagrant/HammerDB/*.sh
+    dos2unix /home/vagrant/MySQL/*.sh
+    dos2unix /home/vagrant/PostgreSQL/*.sh
   SHELL
 end
