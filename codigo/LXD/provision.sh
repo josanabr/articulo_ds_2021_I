@@ -9,10 +9,11 @@ then
     lxc exec $CONTAINER -- cloud-init status -w
 fi
 
-echo "Install stress-ng"
-lxc exec $CONTAINER -- snap install stress-ng
 echo "push .sh files to container and run tests"
 sh push_files.sh $CONTAINER
+
+echo "Install stress-ng"
+lxc exec $CONTAINER -- bash -c "cd /root/StressNG/ && sh install.sh"
 
 echo "Install NPB Benchmark tool"
 lxc exec $CONTAINER -- bash -c "cd /root/NPB/ && sh script_instalacion.sh"

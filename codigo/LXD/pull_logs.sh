@@ -2,7 +2,7 @@
 CONTAINER=$1
 
 echo "Pull Stress-ng logs"
-lxc file pull $CONTAINER/root/stress_ng_lxc.log logs/stress-ng.lxd.log
+lxc file pull $CONTAINER/root/StressNG/stress_ng.log logs/stress-ng.lxd.log
 
 echo "Pull NPB logs"
 for j in cg ep ft; do
