@@ -2,7 +2,11 @@
 CONTAINER=$1
 
 echo "Pull Stress-ng logs"
-lxc file pull $CONTAINER/root/StressNG/stress_ng.log logs/stress-ng.lxd.log
+for test in cpu io hdd vm dccp; do
+  for workers in 1 2 4 8 16 32 64; do  
+    lxc file pull $CONTAINER/root/StressNG/stressng.$test.$workers.log logs/stressng.$test.$workers.lxd.log
+  done
+done
 
 echo "Pull NPB logs"
 for j in cg ep ft; do
