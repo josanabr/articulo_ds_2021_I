@@ -1,8 +1,7 @@
 #!/usr/bin/sh
-TIMEOUT=10
 
 # Run stress-ng benchmark
-cd /root/ && sh ./StressNG/run_test.sh -t $TIMEOUT -l /root/StressNG
+cd /root/ && sh ./StressNG/run_test.sh -t 60m -l /root/StressNG
 
 # Run NPB benchmark
 NPBWD=/root/NPB/NPB3.4.1/NPB3.4-OMP/bin
